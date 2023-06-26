@@ -6,7 +6,7 @@ in this project i wrote duckyScript which can be used in all ducky usb and flipp
 
 #how the program work explanation!
 in this DuckyScript we going to use the 8sec smart steal wifi password from pc using duckyScript
-which mean start at plugin/activate duckyscript the cmd going to minimize window mode
+which mean start at plugin into taget pc or activate duckyscript from flipper when start the cmd going to minimize window mode
 ,and dependent on the amount of wifi password in target pc its going to run all the SSID and Passwords to json file
 and send to webhook server at the end its using c# script to exit the cmd and leave no trace to what just happned!
 
@@ -15,13 +15,13 @@ method for not getting exposed.
 
 #guide
 first go to the free website: https://webhook.site/
-in this site you first getting webhook link (every body using diffrent account getting their own private link)
+in this site you first getting webhook link (everybody using diffrent account getting their own private link)
 when you have the link simply download/copy the duckyScript txt at the project and change the line to your own link!
 
 and then copy your txt file to your runing duckyScript device(like ducky usb or flipper zero)
 in usb just plug it in and the code will run ,in flipper zero copy duckyScript.txt to the bad USB file in system files and run it.
 
-now when opening the webhook site you will see now data with all target pc SSID and Passwords
+now when opening the webhook site you will see new data with all target pc SSID and Passwords in json file.
 
 Yes it's that simple !!!
 
